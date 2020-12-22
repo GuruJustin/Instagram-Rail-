@@ -12,7 +12,7 @@ class PicsController < ApplicationController
     end
 
     def update
-        if @pic.save
+        if @pic.update(pic_params)
             redirect_to root_path, notice: "Yes! Successfully saved"
         else
             render 'edit'
