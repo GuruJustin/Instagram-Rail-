@@ -1,5 +1,11 @@
-- @pics.each do |pic|
-    = link_to pic.title, pic
-    %br
+.col-md-8.col-md-offset-2
+    .row
+        .panel.panel-default
+            .panel-heading
+                Picture List
+            .panel-body
+                - @pics.each do |pic|
+                    = link_to pic.title, pic
+                    %br
 
-=link_to "Gram it", new_pic_path
+                =link_to "Gram it", new_pic_path
