@@ -9,8 +9,11 @@ class PicsController < ApplicationController
     end
 
     def edit
+    end
+
+    def update
         if @pic.save
-            redirect_to pics_path, notice: "Yes! Successfully saved"
+            redirect_to root_path, notice: "Yes! Successfully saved"
         else
             render 'edit'
         end
@@ -20,7 +23,7 @@ class PicsController < ApplicationController
         @pic = Pic.new(pic_params)
         
         if @pic.save
-            redirect_to pics_path, notice: "Yes! Successfully saved"
+            redirect_to root_path, notice: "Yes! Successfully saved"
         else
             render 'new'
         end
@@ -31,11 +34,8 @@ class PicsController < ApplicationController
     end
 
     def destroy
-        if @pic.destroy
-            redirect_to pic_path, notify: "Yes! Succesfully removed"
-        else
-            render 'edit'
-        end
+        @pic.destroy
+        redirect_to root_path, notice: "Yes! Succesfully removed"
     end
 
     private
