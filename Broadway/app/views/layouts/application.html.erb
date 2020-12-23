@@ -11,6 +11,30 @@
   </head>
 
   <body>
+    <nav class = "navbar navbar-inverse">
+      <div class = "container">
+        <div class = "navbar-brand">
+          <%= link_to "Broadway", root_path %>
+        </div>
+
+        <ul class = "nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li> <%= link_to "Sign Out", destroy_user_session_path, method: :delete%> </li>
+          <% else %>
+            <li> <%= link_to "Sing In", new_user_session_path %> </li>
+            <li> <%= link_to "Sign Up", edit_user_registration_path %> </li>
+          <% end %>
+        </ul>
+
+        <ul class = "nav navbar-nav">
+          <% if user_signed_in? %>
+            <li> <%= link_to "Add Play", new_play_path %> </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <div class = "container">

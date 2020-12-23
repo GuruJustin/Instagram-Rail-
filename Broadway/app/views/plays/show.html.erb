@@ -1,9 +1,14 @@
 <h1><%= @play.title %></h1>
 <p><%= @play.description %></p>
+<h4><%= @play.category.name %></h4>
 <p><strong><%= @play.director %></strong></p>
 <p><%=  time_ago_in_words(@play.created_at) %></p>
 
 
-<%= link_to "Back", root_path %> | 
-<%= link_to "Edit", edit_play_path %> |
-<%= link_to "Delete", play_path(@play), method: :delete, data: { confirm: "Are you sure?" } %>
+<div class = "links btn-group">
+    <%= link_to "Back", root_path %>
+    <% if user_signed_in? && current_user.id == @play.user_id %>
+        <%= link_to "Edit", edit_play_path %>
+        <%= link_to "Delete", play_path(@play), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+</div>
