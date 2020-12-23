@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-    before_action :find_item, only: [:edit, :update, :show, :destroy]
+    before_action :find_item, only: [:edit, :update, :show, :destroy, :complete]
     before_action :authenticate_user!, except: [:index, :show]
 
     def index
@@ -39,6 +39,12 @@ class ItemsController < ApplicationController
     def destroy
         @item.destroy
         redirect_to root_path, notice: "Removed Successfully"
+    end
+
+    def complete
+        @item = Item.find(params[:id])
+        @item.update_attribute(:completed_at, Time.now)
+        redirect_to root_path
     end
 
     private
