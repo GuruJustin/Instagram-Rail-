@@ -1,0 +1,9 @@
+<h1><%= @play.title %></h1>
+<p><%= @play.description %></p>
+<p><strong><%= @play.director %></strong></p>
+<p><%=  time_ago_in_words(@play.created_at) %></p>
+
+
+<%= link_to "Back", root_path %> | 
+<%= link_to "Edit", edit_play_path %> |
+<%= link_to "Delete", play_path(@play), method: :delete, data: { confirm: "Are you sure?" } %>

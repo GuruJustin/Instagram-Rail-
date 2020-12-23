@@ -1,0 +1,8 @@
+<% @plays.each do |play| %>
+    <h1><%= link_to play.title, play_path(play)%></h1>
+    <p><%= truncate(play.description, length:150) %></p>
+    <p><strong><%= play.director %></strong></p>
+    <p><%=  time_ago_in_words(play.created_at) %></p>
+<% end %>
+
+<%= link_to "Add Play", new_play_path %>
