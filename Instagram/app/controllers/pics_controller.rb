@@ -1,5 +1,6 @@
 class PicsController < ApplicationController
-    before_action :find_pic, only: [:edit, :update, :show, :destroy]
+    before_action :find_pic, only: [:edit, :update, :show, :destroy, :upvote]
+    before_action :authenticate_user!, except: [:index, :show]
 
     def index
         @pics = Pic.all()
@@ -27,6 +28,11 @@ class PicsController < ApplicationController
         else
             render 'new'
         end
+    end
+
+    def upvote
+        @pic.upvote_by current_user
+        redirect_back(fallback_location: root_path)
     end
     
     def new

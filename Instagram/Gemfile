@@ -31,7 +31,7 @@ gem 'sprockets', '~> 4.0', '>= 4.0.2'
 gem 'rails-ujs', '~> 0.1.0'
 gem 'jquery-rails', '~> 4.4'
 gem 'masonry-rails', '~> 0.2.4'
-
+gem 'acts_as_votable', '~> 0.13.1'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
