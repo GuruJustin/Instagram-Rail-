@@ -9,6 +9,21 @@ class PicsController < ApplicationController
     def show
     end
 
+    
+    def new
+        @pic = current_user.pic.build
+    end
+    
+    def create
+        @pic = current_user.pic.build(pic_params)
+        
+        if @pic.save
+            redirect_to root_path, notice: "Yes! Successfully saved"
+        else
+            render 'new'
+        end
+    end
+
     def edit
     end
 
@@ -20,24 +35,11 @@ class PicsController < ApplicationController
         end
     end
 
-    def create
-        @pic = Pic.new(pic_params)
-        
-        if @pic.save
-            redirect_to root_path, notice: "Yes! Successfully saved"
-        else
-            render 'new'
-        end
-    end
-
     def upvote
         @pic.upvote_by current_user
         redirect_back(fallback_location: root_path)
     end
     
-    def new
-        @pic = Pic.new
-    end
 
     def destroy
         @pic.destroy

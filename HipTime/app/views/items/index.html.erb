@@ -1,0 +1,9 @@
+<% if user_signed_in?  %>
+    <% @items.each do |item| %>
+        <h1><%= link_to item.title, item_path(item) %></h1>
+        <p><%= time_ago_in_words(item.created_at)%>ago</p>
+        <p><%= truncate(item.description, length:20) %></p>
+    <% end %>
+<% else %>
+    <%= render 'welcome' %>
+<% end %>
