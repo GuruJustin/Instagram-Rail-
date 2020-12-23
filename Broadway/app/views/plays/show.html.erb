@@ -13,6 +13,18 @@
     </div>
 </div>
 
+<div class = "row">
+    <div class = "col-md-12">
+        <div class = 'reviews'>
+            <h3> Reviews </h3>
+            <%= render @play.reviews %>
+            <div>
+                <%= link_to "Add Reviews", new_play_review_path(@play), class: "btn-custom btn" %>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class = "links btn-group">
     <%= link_to "Back", root_path %>
     <% if user_signed_in? && current_user.id == @play.user_id %>
