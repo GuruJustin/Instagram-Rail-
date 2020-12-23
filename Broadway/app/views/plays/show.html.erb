@@ -1,14 +1,22 @@
-<h1><%= @play.title %></h1>
-<p><%= @play.description %></p>
-<h4><%= @play.category.name %></h4>
-<p><strong><%= @play.director %></strong></p>
-<p><%=  time_ago_in_words(@play.created_at) %></p>
-
+<div class = "row">
+    <div class = 'col-md-4'>
+        <%= image_tag @play.play_img.url(:play_show), class: "play-show" %>
+    </div>
+    <div class = "col-md-8">
+        <div class = "play-info">
+            <h2 class = "play-title"><%= @play.title %></h2>
+            <h4 class = "play-director"><%= @play.category.name %></h4>
+            <p class = "play-director"><span>From </span><strong><%= @play.director %></strong></p>
+            <p class = "play-desc"><%= @play.description %></p>
+            <p style = "opacity:0.8"><%=  time_ago_in_words(@play.created_at) %></p>
+        </div>
+    </div>
+</div>
 
 <div class = "links btn-group">
     <%= link_to "Back", root_path %>
     <% if user_signed_in? && current_user.id == @play.user_id %>
-        <%= link_to "Edit", edit_play_path %>
-        <%= link_to "Delete", play_path(@play), method: :delete, data: { confirm: "Are you sure?" } %>
+        <%= link_to "Edit", edit_play_path(@play), class: "btn btn-custom" %>
+        <%= link_to "Delete", play_path(@play), class: "btn btn-custom", method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
 </div>
