@@ -1,7 +1,23 @@
-%h3= @pic.title
-%p= @pic.user.email
-%p= @pic.description
+#pic_show.row
+    .col-md-6.col-md-offset-3
+        .panel.panel-default
+            .panel.heading.pic.image
+                = image_tag @pic.image.url(:medium)
+            .panel-body
+                %h3= @pic.title
+                %p= @pic.description
+            .panel-footer
+                .row
+                    .col-md-6
+                        %p.user
+                            by
+                            = @pic.user.email
 
-= link_to "Back", pics_path
-= link_to "Edit", edit_pic_path
-= link_to "Remove", pic_path, method: :delete, data: { confirm: "Are you sure?" }
+                    .col-md-6
+                        .btn-group.pull-right
+                            - if user_signed_in?
+                                = link_to "Edit", edit_pic_path, class: "btn btn-info"
+                                = link_to "Remove", pic_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-warning"
+
+
+%br

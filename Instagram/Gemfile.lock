@@ -260,6 +260,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   selenium-webdriver
   simple_form (~> 5.0, >= 5.0.3)
+  sprockets (~> 4.0, >= 4.0.2)
   sqlite3 (~> 1.4)
   turbolinks (~> 5)
   tzinfo-data

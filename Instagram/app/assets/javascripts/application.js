@@ -1,4 +1,3 @@
-
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -16,6 +15,4 @@
 //= require bootstrap-sprockets
 //= require masonry/jquery.masonry
 //= require turbolinks
-
-//= link_tree ../images
-//= link_directory ../stylesheets .css
+//= require_tree .
