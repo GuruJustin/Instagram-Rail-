@@ -8,6 +8,10 @@
             <h4 class = "play-director"><%= @play.category.name %></h4>
             <p class = "play-director"><span>From </span><strong><%= @play.director %></strong></p>
             <p class = "play-desc"><%= @play.description %></p>
+
+            <h4 class = "avg-rating">Average Rating</h4>
+            <div class = "average-review-rating" data-score="<%= @average_review%>"></div>
+            <span class = "number-of-reviews"><em>From</em> <%= @play.reviews.count %> reviews</span>
             <p style = "opacity:0.8"><%=  time_ago_in_words(@play.created_at) %></p>
         </div>
     </div>
@@ -32,3 +36,20 @@
         <%= link_to "Delete", play_path(@play), class: "btn btn-custom", method: :delete, data: { confirm: "Are you sure?" } %>
     <% end %>
 </div>
+
+<script>
+    $('.review-rating').raty({
+        readOnly:true,
+        score: function() {
+            return $(this).attr('data-score');
+        },
+        path: '/assets/'
+    });
+    $('.average-review-rating').raty({
+        readOnly:true,
+        score: function() {
+            return $(this).attr('data-score');
+        },
+        path: '/assets/'
+    });
+</script>
